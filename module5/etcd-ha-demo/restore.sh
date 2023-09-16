@@ -1,4 +1,5 @@
 export ETCDCTL_API=3
+
 etcdctl snapshot restore snapshot.db \
   --name infra0 \
   --data-dir=/tmp/etcd/infra0 \

@@ -5,7 +5,7 @@
 # dir-data cannot be shared
 #
 nohup etcd --name infra0 \
---data-dir=/tmp/etcd/infra0 \
+--data-dir=/tmp/etcd/infra0.etcd \
 --listen-peer-urls https://127.0.0.1:3380 \
 --initial-advertise-peer-urls https://127.0.0.1:3380 \
 --listen-client-urls https://127.0.0.1:3379 \
@@ -21,7 +21,7 @@ nohup etcd --name infra0 \
 --peer-key-file=/tmp/etcd-certs/certs/127.0.0.1-key.pem 2>&1 > /var/log/infra0.log &
 
 nohup etcd --name infra1 \
---data-dir=/tmp/etcd/infra1 \
+--data-dir=/tmp/etcd/infra1.etcd \
 --listen-peer-urls https://127.0.0.1:4380 \
 --initial-advertise-peer-urls https://127.0.0.1:4380 \
 --listen-client-urls https://127.0.0.1:4379 \
@@ -37,7 +37,7 @@ nohup etcd --name infra1 \
 --peer-key-file=/tmp/etcd-certs/certs/127.0.0.1-key.pem 2>&1 > /var/log/infra1.log &
 
 nohup etcd --name infra2 \
---data-dir=/tmp/etcd/infra2 \
+--data-dir=/tmp/etcd/infra2.etcd \
 --listen-peer-urls https://127.0.0.1:5380 \
 --initial-advertise-peer-urls https://127.0.0.1:5380 \
 --listen-client-urls https://127.0.0.1:5379 \
