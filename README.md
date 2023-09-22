@@ -7,3 +7,6 @@
 * LimfxCodeEx
 * Code Spell Checker
 * Comment Translate
+
+### Markdown 官方教程
+[教程](https://markdown.com.cn/extended-syntax/tables.html)
