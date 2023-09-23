@@ -13,7 +13,8 @@ import (
 
 func main() {
 	http.HandleFunc("/authenticate", func(w http.ResponseWriter, r *http.Request) {
-		decoder := json.NewDecoder(r.Body)
+		// 解码认证请求
+		decoder := json.NewDecoder(r.Body) // request body 即apisrver发送过来的TokenReview对象
 		var tr authentication.TokenReview
 		err := decoder.Decode(&tr)
 		if err != nil {
@@ -29,11 +30,13 @@ func main() {
 			return
 		}
 		log.Print("receving request")
+		// 转发认证请求至认证服务器
 		// Check User
 		ts := oauth2.StaticTokenSource(
 			&oauth2.Token{AccessToken: tr.Spec.Token},
 		)
 		tc := oauth2.NewClient(context.Background(), ts)
+		// 把Token发送给GitHub服务器
 		client := github.NewClient(tc)
 		user, _, err := client.Users.Get(context.Background(), "")
 		if err != nil {
@@ -48,6 +51,7 @@ func main() {
 			})
 			return
 		}
+		// 将认证结果返回给apiserver
 		log.Printf("[Success] login as %s", *user.Login)
 		w.WriteHeader(http.StatusOK)
 		trs := authentication.TokenReviewStatus{
