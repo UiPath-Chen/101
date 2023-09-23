@@ -26,6 +26,12 @@ kubectl get po  pod-with-defaults -oyaml
 kubectl logs -f pod-with-defaults
 ```
 
+### Cleanup
+```bash
+k delete ns webhook-demo
+k delete MutatingWebhookConfiguration demo-webhook
+```
+
 ### More details
 
 https://github.com/cncamp/admission-controller-webhook-demo/blob/main/README.md
