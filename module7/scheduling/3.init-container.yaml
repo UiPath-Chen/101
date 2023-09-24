@@ -12,10 +12,11 @@ spec:
       labels:
         app: nginx
     spec:
-      initContainers:
-        - name: init-myservice
+      initContainers:           # 配置初始化的工作；比如istio配置iptables规则，配置完毕，退出
+        - name: init-myservice  # initContainer，顺序执行，一个一个执行
           image: busybox:1.28
           command: ['sh', '-c', 'echo The app is running! && sleep 10']
-      containers:
+      containers:               # 主容器，一起执行
         - name: nginx
           image: nginx
+          imagePullPolicy: IfNotPresent

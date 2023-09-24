@@ -1,0 +1,12 @@
+apiVersion: scheduling.k8s.io/v1
+description: “This priority class should be used for XYZ service pods only”
+
+# true: 对于没有打PriorityClass的Pod的优先级都是1000000
+# false:只有打了PriorityClass的Pod的优先级才是1000000
+globalDefault: false
+
+kind: PriorityClass
+metadata:
+  name: high-priority
+preemptionPolicy: PreemptLowerPriority  # 抢占低优先级Pod的资源，驱逐Pod（默认）; Never-不抢占
+value: 1000000

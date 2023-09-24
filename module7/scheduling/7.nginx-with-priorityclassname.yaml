@@ -16,5 +16,4 @@ spec:
         - name: nginx
           image: nginx
           imagePullPolicy: IfNotPresent
-      nodeSelector:     # 节点过滤器; 给节点打标签：kubectl label no foo disktype=ssd
-        disktype: ssd
+      priorityClassName: high-priority

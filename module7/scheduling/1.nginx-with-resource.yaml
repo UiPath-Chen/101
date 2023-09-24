@@ -15,10 +15,11 @@ spec:
       containers:
         - name: nginx
           image: nginx
+          imagePullPolicy: IfNotPresent
           resources:
             limits:         # CGroup的配置；应用使用资源上限； 白天利用资源多;
               memory: 1Gi
-              cpu: 1
+              cpu: 1000m
             requests:       # Pod最少需要多少资源
               memory: 256Mi
               cpu: 100m     # 容器中的单位：1m = 1/1000CPU；晚上资源利用少;

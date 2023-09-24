@@ -15,8 +15,9 @@ spec:
       containers:
         - name: nginx
           image: nginx
-      tolerations:
+          imagePullPolicy: IfNotPresent
+      tolerations:                    # 目标节点被打了污点Taint，但是我可以容忍Toleration;
         - key: "for-special-user"
           operator: "Equal"
-          value: "cadmin"
+          value: "keystone"
           effect: "NoSchedule"
