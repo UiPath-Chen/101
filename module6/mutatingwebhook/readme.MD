@@ -30,6 +30,7 @@ kubectl logs -f pod-with-defaults
 ```bash
 k delete ns webhook-demo
 k delete MutatingWebhookConfiguration demo-webhook
+k delete secrets default-token-w8rr8
 ```
 
 ### More details
