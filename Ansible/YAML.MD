@@ -7,7 +7,7 @@ https://docs.ansible.com/ansible/latest/reference_appendices/YAMLSyntax.html
 - https://yaml.org/
 
 - #： 注释
-- 大小写敏感
+- 大小写敏感 affinity
 - 无tab，只有空格; 用空格表示缩进、层级关系
 - 左对齐，表示同一层级
 - 回车+缩进
