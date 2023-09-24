@@ -8,5 +8,9 @@
 * Code Spell Checker
 * Comment Translate
 
+* Go
+* Code Runner
+* vscode-icons
+
 ### Markdown 官方教程
 [教程](https://markdown.com.cn/extended-syntax/tables.html)
