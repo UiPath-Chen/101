@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+spec:
+  replicas: 1 # relicas + template: 创建副本集所需
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx
+        imagePullPolicy: IfNotPresent
+      strategy:                 # 策略
+        type: RollingUpdate     # 滚动升级策略：批次升级；只要保证业务高可用，就可以在白天升级，不用夜晚升级
+        rollingUpdate:
+          maxUnavailable: 25%   # 如果25%的Pod不Ready，部署暂停，那么就不升级
+          maxSurge: 25%         # Pod启动时候，先启动25%新的Pods
+      revisionHistoryLimit: 10
+
