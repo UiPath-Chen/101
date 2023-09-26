@@ -136,7 +136,7 @@ sudo systemctl enable containerd.service
 sudo systemctl disable containerd.service
 
 docker info
-# 检查Cgrpu Driver: systemd, 如果是cgroupfs
+# 检查Cgroup Driver: systemd, 如果是cgroupfs
 sudo systemctl daemon-reload
 systemctl stop docker.socket
 systemctl restart docker
