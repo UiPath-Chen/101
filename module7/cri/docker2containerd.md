@@ -71,6 +71,13 @@ journalctl -xeu containerd.service
 systemctl status kubelet
 
 ```
+
+### debug
+服务器意外重启，导致containerd的进程临时文件没有正常清除,导致启动timeout
+```bash
+rm -rf /var/lib/containerd/*
+``````
+
 ### crictl - client for CRI
 ```sh
 #
