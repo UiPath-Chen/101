@@ -8,7 +8,8 @@ systemctl stop docker.socket
 systemctl stop docker.service
 systemctl stop containerd
 
-for svc in kubelet docker.socket docker.service containerd;do systemctl stop ${svc};done
+systemctl disable docker.socket
+systemctl disable docker.service
 ```
 
 ### Create containerd config folder & Update default config
@@ -78,6 +79,8 @@ systemctl status kubelet
 cat <<EOF | sudo tee /etc/crictl.yaml
 runtime-endpoint: unix:///run/containerd/containerd.sock
 EOF
+
+crictl images
 
 crictl images/ps(容器进程)/pods(sandbox进程)/inspect <container id>/inspectp <pod id>/inspecti <image id>
 docker images/ps
