@@ -1,3 +1,8 @@
+## Ceph RDB
+RBD全称RADOS block device，是Ceph对外提供的块设备服务。
+
+RADOS全称Reliable Autonomic Distributed Object Store，是Ceph集群的精华，用户实现数据分配、Failover等集群操作。
+
 ### Resetup rook
 
 ```sh
@@ -11,7 +16,7 @@ Create a raw disk from virtualbox console and attach to the vm (must > 5G).
 ### Clean env for next demo
 
 ```sh
-delete ns rook-ceph
+# delete ns rook-ceph
 for i in `kubectl api-resources | grep true | awk '{print \$1}'`; do echo $i;kubectl get $i -n clusternet-skgdp; done
 ```
 
@@ -29,7 +34,7 @@ kubectl create -f crds.yaml -f common.yaml -f operator.yaml
 ```
 
 ### Create ceph cluster
-
+创建Ceph CRD
 ```sh
 kubectl get po -n rook-ceph
 ```
@@ -64,6 +69,20 @@ ROOK_CSI_ENABLE_RBD: "true"
 ```sh
 k get csidriver rook-ceph.rbd.csi.ceph.com
 ```
+
+### Check rdp plugin
+```bash
+kubectl get po csi-rbdplugin-provisioner-xxx-xx -n rook-ceph -o=yaml |grep 'image:'
+``````
+发现rbd-plugin-provisioner启动了很多容器
+插件按功能，分成2部分
+1. 通用框架
+	- csi-provisioner: 监控PVC的创建
+	- csi-resize
+	- csi-attacher
+	- csi-snapshotter
+2. rook 提供的Ceph CSI Driver;
+  - cephcsi: 创建Volume
 
 ### Check csi plugin configuration
 

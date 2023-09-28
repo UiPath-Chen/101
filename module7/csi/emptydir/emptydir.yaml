@@ -15,9 +15,10 @@ spec:
       containers:
         - name: nginx
           image: nginx
-          volumeMounts:
+          imagePullPolicy: IfNotPresent
+          volumeMounts:                   # 容器使用Volume时候，需要自己挂载
           - mountPath: /cache
             name: cache-volume
-      volumes:
+      volumes:                        # Volume在容器外
       - name: cache-volume
         emptyDir: {}
