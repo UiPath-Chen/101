@@ -177,12 +177,25 @@ git push [origin main]
 
 ### SSH密钥
 https://docs.github.com/zh/authentication
+
+### 仅下载单独分支
+
+```bash
+git clone --single-branch --branch master https://github.com/rook/rook.git 
+```
+
+
+
 ### DNS解析污染
 由于国内墙, 导致若使用代理去解析github.com, 根本无法控制DNS会解析到好用的地址，所以不如直接使用其原始地址,一劳永逸
 https://www.ipaddress.com/
  /etc/hosts 或 C:\Windows\System32\drivers\etc\hosts
 140.82.112.4 github.com
+
+
+
 ### 注意
+
 国内连接 GitHub 网速可能会比较慢，大家也可以使用 Gitee（ https://gitee.com/ ）来代替，两者的功能和使用方法是类似的。
 Gitee 相关操作文档：
 -  https://gitee.com/help/articles/4120
