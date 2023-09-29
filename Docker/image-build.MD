@@ -71,6 +71,4 @@ make: *** [Makefile:11: release] Error 1
 docker buildx ls
 
 docker buildx create --use
-
-docker buildx ls
 ```
