@@ -6,6 +6,7 @@ spec:
   containers:
     - name: http-probe
       image: nginx
+      imagePullPolicy: IfNotPresent
       readinessProbe:
         httpGet:
           ### this probe will fail with 404 error code

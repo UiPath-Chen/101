@@ -4,9 +4,9 @@ metadata:
   name: nginx-basic
 spec:
   type: ClusterIP
-  ports:
-    - port: 80
-      protocol: TCP
+  ports:              ### 前端
+    - port: 80        # 所发布的服务的端口
+      protocol: TCP   # 所发布的服务的协议
       name: http
-  selector:
-    app: nginx
+  selector:           ### 后端：定义了svc是为了哪些Pods提供服务发布功能
+    app: nginx        # 过滤查询，查询一组Pod's Label，其实就是把一组Pod过滤出来

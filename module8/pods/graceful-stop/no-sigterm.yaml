@@ -3,9 +3,11 @@ kind: Pod
 metadata:
   name: no-sigterm
 spec:
-  terminationGracePeriodSeconds: 60
+  # 60s, 如果存在pre-stop, 分一部分时间给pre-stop，剩下时间留给SIGTERM;不存在pre-stop，60s都给SIGTERM
+  terminationGracePeriodSeconds: 60 # 不存在pre-stop, 那么请发送SIGTERM(15), 等待60s，然后发送SIGKILL(9)
   containers:
     - name: no-sigterm
       image: centos
-      command: ["/bin/sh"]
+      imagePullPolicy: IfNotPresent
+      command: ["/bin/sh"]        # sh 永远无法接收SIGTERM； 关机程序会接收SIGTERM；具体哪个程序会接收SIGTERM，要看内部代码
       args: ["-c", "while true; do echo hello; sleep 10;done"]

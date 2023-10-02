@@ -6,11 +6,12 @@ spec:
   containers:
     - name: initial-delay
       image: centos
+      imagePullPolicy: IfNotPresent
       args:
         - /bin/sh
         - -c
         - touch /tmp/healthy; sleep 30; rm -rf /tmp/healthy; sleep 600
-      readinessProbe:
+      readinessProbe:   #
         exec:
           command:
             - cat

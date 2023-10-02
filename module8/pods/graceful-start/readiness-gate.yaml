@@ -5,11 +5,13 @@ metadata:
     app: readiness-gate
   name: readiness-gate
 spec:
-  readinessGates:
+  readinessGates: # 如果检测不同过，会发现Ready为1/1， 但READINESS GATES为0/1；从别处无法发现错误；
     - conditionType: "www.example.com/feature-1"
   containers:
     - name: readiness-gate
       image: nginx
+      imagePullPolicy: IfNotPresent
+
 ---
 apiVersion: v1
 kind: Service

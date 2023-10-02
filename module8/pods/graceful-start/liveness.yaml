@@ -10,10 +10,11 @@ spec:
         - /bin/sh
         - -c
         - touch /tmp/healthy; sleep 30; rm -rf /tmp/healthy; sleep 600
-      livenessProbe:
+      livenessProbe: # 但当NotReady时，会自动重启；可以从RESTARTS此时查看容器重启次数；
         exec:
           command:
             - cat
             - /tmp/healthy
+        # 对于liveness, 由于默认successThreshold为1，也就是说默认Ready是100%，如果后面探测有问题，才会配置NotReady；
         initialDelaySeconds: 10
         periodSeconds: 5

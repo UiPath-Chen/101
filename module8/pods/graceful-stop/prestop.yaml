@@ -6,6 +6,7 @@ spec:
   containers:
     - name: lifecycle-demo-container
       image: nginx
+      imagePullPolicy: IfNotPresent
       lifecycle:
         preStop:
           exec:
