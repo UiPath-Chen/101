@@ -10,3 +10,9 @@ spec:
       name: http
   selector:           ### 后端：定义了svc是为了哪些Pods提供服务发布功能
     app: nginx        # 过滤查询，查询一组Pod's Label，其实就是把一组Pod过滤出来
+
+# 查看po: kubectl get po -o=wide
+# 查看svc: kubectl get svc -o=wide
+# /etc/kubernetes/manifests/kube-apiserver.yaml
+#- --service-cluster-ip-range=10.96.0.0/12    配置ClusterIP， 是由api-server创建的
+# 查看ep/查看可用socket: kubectl get ep

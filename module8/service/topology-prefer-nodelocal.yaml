@@ -14,3 +14,8 @@ spec:
     - "topology.kubernetes.io/zone"
     - "topology.kubernetes.io/region"
     - "*"
+
+# 从上往下
+# 按顺序
+# 1. 过滤所有Pod；分成Ready和notReady这两组
+# 2. 将Ready组的Pod分成了几个层次，从上往下，如果上层存在Pod，请求会先转发到上层；否则，一次往下找Pod；

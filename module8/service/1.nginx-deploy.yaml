@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx
+  template:     # Pod definition
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+        - name: nginx
+          image: nginx
+          readinessProbe:           ### 模拟notReady的Pod；如何Ready
+            exec:                   # kubectl exec -it <Pod_Name> -- touch /tmp/health
+              command:              # 查看是否存在可用socket: kubectl get ep
+                - cat               #
+                - /tmp/healthy      #
+            initialDelaySeconds: 5
+            periodSeconds: 5
