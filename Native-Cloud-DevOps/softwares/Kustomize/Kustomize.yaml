@@ -1,0 +1,7 @@
+### 功能
+应用定义，类似Manifest/Helm
+
+### 原理
+YAML 增强
+类似YAML + YQ
+
