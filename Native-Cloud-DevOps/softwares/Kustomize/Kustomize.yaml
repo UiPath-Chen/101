@@ -1,7 +1,19 @@
 ### 功能
 应用定义，类似Manifest/Helm
 
+### 来源
+k8s团队开发的，它们考虑到Manifest定义应用的问题，也认为Manifest不是为了定义应用的
+已经集成在了kubectl中
+
 ### 原理
 YAML 增强
 类似YAML + YQ
 
+### 操作
+```bash
+# 渲染指定环境, 也就是指定带有kustomization.yaml文件的目录
+kubectl kustomize path/
+
+# 渲染
+kubectl kustomize path/ | kubectl apply -f -
+```
