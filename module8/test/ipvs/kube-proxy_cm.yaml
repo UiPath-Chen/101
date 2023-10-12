@@ -1,0 +1,6 @@
+kind: ConfigMap
+metadata:
+labels:
+  app: kube-proxy
+name: kube-proxy
+namespace: kube-system
