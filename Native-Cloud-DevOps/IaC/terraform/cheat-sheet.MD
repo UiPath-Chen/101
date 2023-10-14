@@ -16,6 +16,7 @@ terraform plan
 terraform apply --auto-approve
 terraform state list
 terraform destroy --auto-approve
+<<<<<<< HEAD
 ```
 
 
@@ -26,3 +27,6 @@ terraform destroy --auto-approve
 
 
 
+=======
+```
+>>>>>>> 0a44f80 (feat: fix)

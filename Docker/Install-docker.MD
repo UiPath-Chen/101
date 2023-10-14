@@ -15,6 +15,7 @@ sudo apt-get purge docker-ce docker-ce-cli containerd.io docker-buildx-plugin do
 sudo rm -rf /var/lib/docker
 sudo rm -rf /var/lib/containerd
 ```
+
 ### APT Install
 ```bash
 # 1. Set up the repository
@@ -29,9 +30,9 @@ sudo chmod a+r /etc/apt/keyrings/docker.gpg
 
 # 1.3 Set up the repository
 echo \
-  "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
-  "$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" | \
-  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+"deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+"$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" | \
+sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 
 # 1.4 Update the apt package index
 sudo apt-get update
