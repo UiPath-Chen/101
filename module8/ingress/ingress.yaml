@@ -3,7 +3,7 @@ kind: Ingress
 metadata:
   name: gateway
   annotations:
-    kubernetes.io/ingress.class: "nginx"
+    kubernetes.io/ingress.class: "nginx"        # 控制器类型：nginx/haproxy/novy
 spec:
   tls:
     - hosts:
@@ -17,6 +17,6 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: nginx
+                name: nginx-basic
                 port:
                   number: 80
