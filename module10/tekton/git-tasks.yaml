@@ -16,7 +16,7 @@ spec:
       type: git
   steps:
   - name: github-build
-    image: cncamp/executor
+    image: cncamp/executor    # kaniko 镜像构建
     workingDir: /workspace/repo
     args:
     - "--dockerfile=./httpserver/Dockerfile"

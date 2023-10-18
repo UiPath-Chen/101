@@ -1,3 +1,10 @@
+## Prepare
+### Create cvm
+```
+ssh-copy-id ubuntu@43.129.190.13
+ssh 'ubuntu@43.129.190.13'
+```
+
 ### Download harbor helm chart
 
 ```sh
@@ -29,8 +36,14 @@ helm install harbor ./harbor -n harbor
 ```
 
 ### Wait for all pod being ready and access harbor portal
+```bash
+kubectl get svc -n harbor
+```
+NAME                TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)                      AGE
+harbor              NodePort    10.96.254.71     <none>        80:30002/TCP,443:30003/TCP   23m
 
-http://192.168.34.2:30002
+https://172.18.27.134:30003
+
 admin/Harbor12345
 
 ### Download repository certs from
@@ -42,7 +55,7 @@ https://192.168.34.2:30003/harbor/projects/1/repositories
 ### Copy the downloaded ca.crt to vm docker certs configuration folder
 
 ```sh
-mkdir /etc/docker/certs.d/core.harbor.domain/
+mkdir -p /etc/docker/certs.d/core.harbor.domain/
 copy the ca.crt to this folder
 systemctl restart docker
 ```

@@ -13,3 +13,14 @@ curl -LO https://github.com/tektoncd/cli/releases/download/v0.20.0/tektoncd-cli-
 sudo dpkg -i ./tektoncd-cli-0.20.0_Linux-64bit.deb
 which tkn
 ```
+
+### operate
+```bash
+kubectl apply -f task-hello.yaml
+kubectl create -f taskrun-hello.yaml
+kubectl get task
+kubectl get taskrun
+kubectl get po
+kubectl logs -f hello-run-xx-yyyy
+```
+
