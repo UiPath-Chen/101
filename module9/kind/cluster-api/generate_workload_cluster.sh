@@ -3,3 +3,7 @@ clusterctl generate cluster capi-quickstart --flavor development \
   --control-plane-machine-count=1 \
   --worker-machine-count=1 \
   > capi-quickstart.yaml
+
+
+
+

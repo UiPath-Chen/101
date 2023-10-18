@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: resource-beyong-the-node-allocation
+  labels:
+    role: myrole
+spec:
+  containers:
+    - name: web
+      image: nginx
+      imagePullPolicy: IfNotPresent
+      ports:
+        - name: web
+          containerPort: 80
+          protocol: TCP
+      resources:
+        limits:
+            cpu: 4
+            memory: 100Mi
+        requests:
+            cpu: 3
+            memory: 10Mi

@@ -1,4 +1,33 @@
-### Create host cluster
+## Prepare
+### Create cvm
+```
+ssh-copy-id ubuntu@101.32.194.253
+ssh 'ubuntu@101.32.194.253'
+```
+
+### Install kind
+```bash
+KINDPATH=/usr/local/bin/kind
+curl -Lo $KINDPATH https://kind.sigs.k8s.io/dl/v0.17.0/kind-linux-amd64
+chmod o+x $KINDPATH
+kind --version
+```
+
+### Install docker
+### Install kubectl
+```bash
+snap install kubectl --classic
+kubectl version --client
+```
+### Install clusterctl
+```bash
+curl -L https://github.com/kubernetes-sigs/cluster-api/releases/download/v1.1.3/clusterctl-linux-amd64 -o /usr/local/bin/clusterctl && chmod +x /usr/local/bin/clusterctl
+
+clusterctl version
+```
+
+
+## Create host cluster
 
 ```sh
 ./create_cluster.sh
@@ -11,6 +40,11 @@ cd cluster-api
 ./init_docker_provider.sh
 ./generate_workload_cluster.sh
 kubectl apply -f capi-quickstart.yaml
+```
+
+### verify
+```bash
+kubectl get no
 ```
 
 ### Check

@@ -13,11 +13,12 @@ journalctl -afu kubelet -S "2019-08-26 15:00:00"
 ```sh
 kubectl logs -f -c <containername> <podname>
 kubectl logs -f --all-containers <podname>
+# 查看pod重启日志-历史
 kubectl logs -f -c <podname> --previous
 ```
 
 ### 如果容器日志被 shell 转储到文件，则需通过 exec
 
 ```sh
-kubectl exec -it xxx -- tail -f /path/to/log
+kubectl exec -it <podname> -- tail -f /path/to/log
 ```

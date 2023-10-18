@@ -3,8 +3,9 @@
 ### Check the `oom_score` and `oom_score_adj`
 
 ```sh
-crictl ps|grep nginx
-crictl inspect b2e7a8e64253d|grep pid
+crictl/docker ps|grep nginx
+crictl/docker inspect 69cbe|grep -i pid
+docker inspect 69cbe |jq '.[0].State.Pid'
 cat /proc/296290/oom_score
 cat /proc/296290/oom_score_adj
 ```
