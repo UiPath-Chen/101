@@ -24,7 +24,7 @@ tar -xvf loki-stack-*.tgz
 cd loki-stack
 ```
 
-### Replace all `rbac.authorization.k8s.io/v1beta1` with `rbac.authorization.k8s.io/v1` by 
+### Replace all `rbac.authorization.k8s.io/v1beta1` with `rbac.authorization.k8s.io/v1` by
 ```sh
 grep -rl "rbac.authorization.k8s.io/v1beta1" . | xargs sed -i 's/rbac.authorization.k8s.io\/v1beta1/rbac.authorization.k8s.io\/v1/g'
 ```
@@ -43,10 +43,16 @@ kubectl edit svc loki-grafana -oyaml -n default
 
 And change ClusterIP type to NodePort.
 
+Login user
+```bash
+kubectl get secret loki-grafana -oyaml -n default |yq '.data.admin-user' |base64 -d
+```
+admin
+
 Login password is in secret `loki-grafana`
 
 ```sh
-kubectl get secret loki-grafana -oyaml -n default
+kubectl get secret loki-grafana -oyaml -n default |yq '.data.admin-password' |base64 -d
 ```
 
 Find admin-password: `xxx`
