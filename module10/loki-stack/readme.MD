@@ -2,12 +2,15 @@
 
 ```sh
 helm repo add grafana https://grafana.github.io/helm-charts
+helm repo update
 ```
 
 ### Install loki-stack
-
 ```sh
-helm upgrade --install loki grafana/loki-stack --set grafana.enabled=true,prometheus.enabled=true,prometheus.alertmanager.persistentVolume.enabled=false,prometheus.server.persistentVolume.enabled=false
+helm \
+upgrade --install \
+loki grafana/loki-stack \
+--set grafana.enabled=true,prometheus.enabled=true,prometheus.alertmanager.persistentVolume.enabled=false,prometheus.server.persistentVolume.enabled=false
 ```
 
 ### If you get the following error, that means your k8s version is too new to install
@@ -68,3 +71,12 @@ Then you will get grafana login password, the login username is 'admin' on defau
 ### Change the grafana service to NodePort type and access it
 
 Login password is in secret `loki-grafana`
+
+
+### explore Loki
+Explore -> Loki
+click `Log browser` -> click `label` -> Show logs
+
+
+
+
