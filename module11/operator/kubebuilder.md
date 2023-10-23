@@ -1,3 +1,9 @@
+### download kubebuilder and install locally.
+```bash
+curl -L -o kubebuilder "https://go.kubebuilder.io/dl/latest/$(go env GOOS)/$(go env GOARCH)"
+chmod +x kubebuilder && mv kubebuilder /usr/local/bin/
+```
+
 ### Create a kubebuilder project, which requires an empty folder
 
 ```sh
@@ -18,7 +24,7 @@ version: "3"
 ```
 
 ### Create API, create resource[Y], create controller[Y]
-
+GKV
 ```sh
 kubebuilder create api --group apps --version v1beta1 --kind MyDaemonset
 ```
