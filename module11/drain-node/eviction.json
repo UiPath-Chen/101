@@ -2,7 +2,7 @@
   "apiVersion": "policy/v1",
   "kind": "Eviction",
   "metadata": {
-    "name": "nginx-deployment-9b44bf4b5-x4xc4",
+    "name": "nginx-deployment-6799fc88d8-48j6s",
     "namespace": "default"
   }
 }

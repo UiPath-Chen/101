@@ -56,7 +56,7 @@ resource "tencentcloud_instance" "kubernetes_master_nodes" {
   internet_max_bandwidth_out = 20
   instance_charge_type       = "SPOTPAID"
   spot_instance_type         = "ONE-TIME"
-  spot_max_price             = "0.1"      #
+  spot_max_price             = var.spot_max_price
   orderly_security_groups            = [tencentcloud_security_group.default.id]
   password                   = var.password
   count                      = 1
@@ -92,15 +92,11 @@ resource "tencentcloud_security_group_lite_rule" "default" {
   security_group_id = tencentcloud_security_group.default.id
   ingress = [
     "ACCEPT#0.0.0.0/0#22#TCP",
-    "ACCEPT#0.0.0.0/0#80#TCP",
     "ACCEPT#0.0.0.0/0#6443#TCP",
 
-    "ACCEPT#0.0.0.0/0#31746#TCP",
-    "ACCEPT#0.0.0.0/0#31751#TCP",
+    # "ACCEPT#0.0.0.0/0#31746#TCP",
+    # "ACCEPT#0.0.0.0/0#31751#TCP",
 
-    "ACCEPT#0.0.0.0/0#32689#TCP",
-
-    "ACCEPT#0.0.0.0/0#32563#TCP",
   ]
 
   egress = [
