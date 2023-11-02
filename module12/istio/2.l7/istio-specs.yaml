@@ -8,26 +8,26 @@ spec:
   hosts:
     - simple.cncamp.io    # 域名校验
   http:
-  - match:
-    - uri:                # 匹配：uri
-        exact: "/simple/hello"
-    rewrite:              # 支持rewrite, 重新发布，重新对应后端
-      uri: "/hello"
-    route:
-      - destination:
-          host: simple.simple.svc.cluster.local
-          port:
-            number: 80
-  - match:
-    - uri:
-        prefix: "/nginx"
-    rewrite:
-      uri: "/"
-    route:
-      - destination:
-          host: nginx.simple.svc.cluster.local
-          port:
-            number: 80
+    - match:
+      - uri:                # 匹配：uri
+          exact: "/simple/hello"
+      rewrite:              # 支持rewrite, 重新发布，重新对应后端
+        uri: "/hello"
+      route:
+        - destination:
+            host: simple.simple.svc.cluster.local
+            port:
+              number: 80
+    - match:
+      - uri:
+          prefix: "/nginx"
+      rewrite:
+        uri: "/"
+      route:
+        - destination:
+            host: nginx.simple.svc.cluster.local
+            port:
+              number: 80
 ---
 apiVersion: networking.istio.io/v1beta1
 kind: Gateway

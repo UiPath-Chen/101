@@ -1,4 +1,7 @@
 ### 部署多套服务
+https://blog.csdn.net/weixin_41709748/article/details/122552765
+https://blog.csdn.net/WuYuChen20/article/details/105932193/
+
 ```sh
 kubectl apply -f nginx.yaml -n simple
 kubectl apply -f istio-specs.yaml -n simple

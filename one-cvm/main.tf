@@ -94,7 +94,7 @@ resource "tencentcloud_security_group_lite_rule" "default" {
     "ACCEPT#0.0.0.0/0#22#TCP",
     "ACCEPT#0.0.0.0/0#6443#TCP",
 
-    # "ACCEPT#0.0.0.0/0#31746#TCP",
+    "ACCEPT#0.0.0.0/0#16686#TCP",
     # "ACCEPT#0.0.0.0/0#31751#TCP",
 
   ]
