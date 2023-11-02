@@ -15,6 +15,9 @@ cd vertical-pod-autoscaler
 
 ```sh
 kubectl apply -f vpa.yaml
+kubectl get vpa -o=yaml
+kubectl get po -o=yaml
+kubectl get vpacheckpoint -o=yaml
 ```
 
 ### Recommmender run once per min, updater run once per min

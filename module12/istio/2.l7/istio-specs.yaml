@@ -6,12 +6,12 @@ spec:
   gateways:
     - simple
   hosts:
-    - simple.cncamp.io
+    - simple.cncamp.io    # 域名校验
   http:
   - match:
-    - uri:
+    - uri:                # 匹配：uri
         exact: "/simple/hello"
-    rewrite:
+    rewrite:              # 支持rewrite, 重新发布，重新对应后端
       uri: "/hello"
     route:
       - destination:

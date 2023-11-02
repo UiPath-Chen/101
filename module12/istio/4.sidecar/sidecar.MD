@@ -6,17 +6,38 @@ kubectl label ns sidecar istio-injection=enabled
 kubectl apply -f nginx.yaml -n sidecar
 kubectl apply -f toolbox.yaml -n sidecar
 ```
+### 查看Envoy配置
+```bash
+kubectl exec -it istio-ingressgateway-xxx-yy -n istio-system -- bash
+curl localhost:15000/config_dump
+```
 
-### Check clusters
+### Check clusters -> 查看具体某项配置
 
 ```sh
+kubectl get po -n sidecar        # READY = 2/2
+kubectl get po <podName> -n sidecar -o=yaml       # 多了一个container（envoy(1337)）
+
 kubectl get po -n sidecar
+crictl pods |grep toolbox-xxx
+crictl inspectp containerd-id|grep pid
+nsenter -t 244941 -n iptables-save
+
+# 查看Envoy配置 policy config
+istioctl pc listener -n sidecar toolbox-68f79dd5f8-hkgkl
+istioctl pc listener -n sidecar toolbox-68f79dd5f8-hkgkl [--port=15001 -o=json]
+istioctl pc route -n sidecar toolbox-68f79dd5f8-hkgkl
+istioctl pc route -n sidecar toolbox-68f79dd5f8-hkgkl [--name=80 -o=json]
+
 istioctl pc cluster -n sidecar toolbox-68f79dd5f8-hkgkl
+istioctl pc endpoint -n sidecar toolbox-68f79dd5f8-hkgkl
 ```
 
 ### Check tcp dump to make sure the traffic forward happen in client side(244941 is toolbox process id)
 
 ```sh
+
+
 nsenter -t 244941 -n tcpdump -i eth0 -vvv port 80
 ```
 

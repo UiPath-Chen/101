@@ -22,7 +22,14 @@ kubectl apply -f istio-specs.yaml -n tracing
 k get svc -nistio-system
 
 istio-ingressgateway   LoadBalancer   $INGRESS_IP
+
+
+kubectl get svc, po -n tracing
 ```
+
+
+
+
 
 ### Access the tracing via ingress for 100 times(sampling rate is 1%)
 

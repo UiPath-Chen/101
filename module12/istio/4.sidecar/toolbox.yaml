@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: toolbox
-          image: centos
+          image: centos   # 带shell, 作为client端
           command:
             - tail
             - -f
