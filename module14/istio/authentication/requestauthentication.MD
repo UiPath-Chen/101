@@ -1,5 +1,5 @@
 ### expose httpbin through gateway
-```
+```Bash
 kubectl apply -f - <<EOF
 apiVersion: networking.istio.io/v1alpha3
 kind: Gateway
@@ -18,7 +18,7 @@ spec:
     - "*"
 EOF
 ```
-```
+```Bash
 kubectl apply -f - <<EOF
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
@@ -39,7 +39,7 @@ spec:
 EOF
 ```
 ### define a RequestAuthentication to valid jwt token if provided
-```
+```Bash
 kubectl apply -f - <<EOF
 apiVersion: security.istio.io/v1beta1
 kind: RequestAuthentication
@@ -56,19 +56,19 @@ spec:
 EOF
 ```
 ### access the gateway service with invalid jwt token will return 401
-```
+```Bash
 curl 192.168.34.2:31783 --header "Authorization: Bearer deadbeef" -s -o /dev/null -w "%{http_code}\n"
 ```
 ### access the gateway service with valid token or without token returns 200
-```
+```Bash
 curl 192.168.34.2:31783/headers
 ```
-```
+```Bash
 TOKEN=eyJhbGciOiJSUzI1NiIsImtpZCI6IkRIRmJwb0lVcXJZOHQyenBBMnFYZkNtcjVWTzVaRXI0UnpIVV8tZW52dlEiLCJ0eXAiOiJKV1QifQ.eyJleHAiOjQ2ODU5ODk3MDAsImZvbyI6ImJhciIsImlhdCI6MTUzMjM4OTcwMCwiaXNzIjoidGVzdGluZ0BzZWN1cmUuaXN0aW8uaW8iLCJzdWIiOiJ0ZXN0aW5nQHNlY3VyZS5pc3Rpby5pbyJ9.CfNnxWP2tcnR9q0vxyxweaF3ovQYHYZl82hAUsn21bwQd9zP7c-LS9qd_vpdLG4Tn1A15NxfCjp5f7QNBUo-KC9PJqYpgGbaXhaGx7bEdFWjcwv3nZzvc7M__ZpaCERdwU7igUmJqYGBYQ51vr2njU9ZimyKkfDe3axcyiBZde7G6dabliUosJvvKOPcKIWPccCgefSj_GNfwIip3-SsFdlR7BtbVUcqR-yv-XOxJ3Uc1MI0tz3uMiiZcyPV7sNCU4KRnemRIMHVOfuvHsU60_GhGbiSFzgPTAa9WTltbnarTbxudb_YEOx12JiwYToeX0DCPb43W1tzIBxgm8NxUg
 curl --header "Authorization: Bearer $TOKEN" "192.168.34.2:31783/headers" -s -o /dev/null -w "%{http_code}\n"
 ```
 ### requires a token(request without token will return 401)
-```
+```Bash
 kubectl apply -f - <<EOF
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
@@ -86,7 +86,7 @@ spec:
         notRequestPrincipals: ["*"]
 EOF
 ```
-### only request with valid token will be accepted 
-```
+### only request with valid token will be accepted
+```Bash
 curl --header "Authorization: Bearer $TOKEN" "192.168.34.2:31783/headers" -s -o /dev/null -w "%{http_code}\n"
 ```

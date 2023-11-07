@@ -1,4 +1,9 @@
-### create dr for all services, this defines multiple subsets for all services 
+### scale down
+```
+kubectl scale deployment productpage-v1 --replicas=0
+```
+
+### create dr for all services, this defines multiple subsets for all services
 ```
 kubectl apply -f samples/bookinfo/networking/destination-rule-all.yaml
 ```
@@ -6,7 +11,7 @@ kubectl apply -f samples/bookinfo/networking/destination-rule-all.yaml
 ```
 kubectl apply -f samples/bookinfo/networking/virtual-service-all-v1.yaml
 ```
-### shift all request from jason to v2 
+### shift all request from jason to v2
 ```
 kubectl apply -f samples/bookinfo/networking/virtual-service-reviews-test-v2.yaml
 ```

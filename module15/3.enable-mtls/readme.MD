@@ -11,6 +11,7 @@ simple        ClusterIP   10.97.215.11     <none>        80/TCP     7d4h
 ```
 ### access product page directly
 ```
+kubectl get po -o=wide
 curl 10.111.120.47:9080
 ```
 ### enable mtls globally

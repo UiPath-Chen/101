@@ -1,11 +1,13 @@
 ## install kubefed by kind
+把k8s改造成fed
+
 ### 下载federation代码
 ```
 git clone https://github.com/kubernetes-sigs/kubefed.git
 ```
 ### 选择HostCluster，确认kubeconfig符合federatio命名规范，用vi编辑kubeconfig，确保context属性没用@字符
 ```
-vi ~/.kube/config 
+vi ~/.kube/config
 ```
 
 contexts:

@@ -5,3 +5,4 @@ metadata:
   namespace: calico-demo
 spec:
   podSelector: {}
+# 默认Ingress Deny
