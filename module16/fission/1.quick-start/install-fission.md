@@ -1,6 +1,5 @@
-
 1. install fission
-```
+```Bash
 export FISSION_NAMESPACE="fission"
 kubectl create namespace $FISSION_NAMESPACE
 kubectl create -k "github.com/fission/fission/crds/v1?ref=v1.18.0"
@@ -13,25 +12,25 @@ helm install --version v1.18.0 --namespace $FISSION_NAMESPACE fission \
 2. Install the client CLI.
 
 Mac:
-```
+```Bash
 curl -Lo fission https://github.com/fission/fission/releases/download/v1.18.0/fission-v1.18.0-darwin-amd64 && chmod +x fission && sudo mv fission /usr/local/bin/
 ```
 
 Linux:
-```
+```Bash
 curl -Lo fission https://github.com/fission/fission/releases/download/v1.18.0/fission-v1.18.0-linux-amd64 && chmod +x fission && sudo mv fission /usr/local/bin/
 ```
 
 Windows:
-```
+```Bash
 For Windows, you can use the linux binary on WSL. Or you can download this windows executable: https://github.com/fission/fission/releases/download/v1.18.0/fission-v1.18.0-windows-amd64.exe
 ```
 
 3. check version
-```
+```Bash
 fission version
 ```
-```
+```Bash
 client:
   fission/core:
     BuildDate: "2022-09-16T13:24:57Z"
@@ -47,22 +46,22 @@ server:
 4. You're ready to use Fission!
 
 # Create an environment
-```
+```Bash
 fission env create --name nodejs --image fission/node-env
 ```
 
 # Get a hello world
-```
+```Bash
 curl https://raw.githubusercontent.com/fission/examples/master/nodejs/hello.js > hello.js
 ```
 
 # Register this function with Fission
-```
+```Bash
 fission function create --name hello --env nodejs --code hello.js
 ```
 
 # Run this function
-```
+```Bash
 fission function test --name hello
 Hello, world!
 ```
